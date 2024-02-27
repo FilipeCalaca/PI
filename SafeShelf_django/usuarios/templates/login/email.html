@@ -1,0 +1,19 @@
+{% extends 'base2.html' %}
+{% block title %}Redefinir Senha{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="../static/usuarios/css/email.css">
+<form action="/enviarEmail/" method="POST" class="formLogin">
+    {% csrf_token %}
+    <div id="emailform">
+        <img class="logologin" oncontextmenu="return false;" src="../../static/usuarios/imagens/Picsart_24-02-17_10-01-27-703.png" alt="">
+        <h1>Redefinir Senha</h1>
+    </div>
+    <p>Digite seu email cadastrado para redefinir sua senha.</p>
+    <label>Email</label>
+    <div id="divicon">
+        <input placeholder="Email" id="id_email" type="email" name="emailsenha">
+        <img class="formicons" oncontextmenu="return false;" src="../../static/usuarios/imagens/icons8-e-mail-100.png" alt="">
+    </div>
+    <div class="formbtn"><button type="submit" class="btn">Enviar</button></div>
+</form>
+{% endblock %}

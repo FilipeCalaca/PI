@@ -1,0 +1,144 @@
+/*Tabelas das listas*/
+/*.divtable{
+    overflow-x: auto;
+  }*/
+  
+table {
+border-collapse: collapse;
+width: 99.5%;
+margin-top: 20px;
+white-space: nowrap;
+box-shadow: 1px 1px 10px #888888;
+background-color: white;
+td {
+  background-color: white;
+}
+}
+
+th, td {
+border: 1px solid #b3b3b3;
+padding: 8px;
+text-align: center !important;
+}
+
+th {
+background-color: #E1E1E1;
+}
+
+#condicaovencido{
+  background-color: #737373 ;
+  text-align: center;
+  border-radius: 20px;
+  color: white;
+  width: 190px;
+  height: 35px;
+  font-weight: 500;
+  padding-top: 5px;
+}
+
+#condicaoproximo{
+background-color:#FF3131;
+border-radius: 40px;
+text-align: center;
+color: white;
+width: 190px;
+height: 35px;
+font-weight: 500;
+padding-top: 5px;
+}
+
+#condicaobom{
+background-color: #00BF63;
+text-align: center;
+border-radius: 30px;
+color: white;
+width: 190px;
+height: 35px;
+font-weight: 500;
+padding-top: 5px;
+
+}
+
+.acoes{
+height: 15px;
+}
+
+/*Botões do Excel*/
+
+.divexcel{
+display: flex;
+align-items: center;
+}
+
+.inputexcel{
+display: none;
+}
+
+.txtexcel{
+padding: 10px;
+border-radius: 10px;
+font-weight: bold;
+}
+
+#upload{
+background-color: #02723B;
+color: #F6F8F7;
+}
+
+#upload:hover{
+background-color: #02582f;
+}
+
+#download{
+text-decoration: none;
+color: #02723B;
+border: 0.5px solid #02723B;
+padding: 10px;
+margin-right: 10px;
+}
+
+#download:hover{
+background-color: #d1d1d1
+}
+
+.txtexcel:hover{
+cursor: pointer;
+}
+
+.imgexcel{
+width: 25px;
+padding-bottom: 3px;
+}
+
+.btnexcel{
+background-color: white;
+font-size: 17px;
+font-weight: 500;
+color:#02723B ;
+display: none;
+margin-left: 10px;
+padding-bottom: 0.5px;
+border: none;
+border-bottom: 2px solid #02723B;
+}
+
+@media(max-width:1000px){
+    .divtable{
+        overflow-x: auto;
+      }
+}
+
+@media(max-width:800px){
+#tabelaEstoque_filter, #tabelaEstoque_length, #tabelaEstoque_info, #tabelaEstoque_paginate,
+#tabelaProduto_length, #tabelaProduto_filter, #tabelaProduto_info, #tabelaProduto_paginate{
+    float: left;
+    margin-bottom: 10px;
+    }
+}
+
+@media(max-width:577px){
+  .btnenviar , .btnexcel {
+    display: flexbox;
+    
+  }
+}

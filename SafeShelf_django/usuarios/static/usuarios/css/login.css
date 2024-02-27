@@ -1,0 +1,76 @@
+p{
+    position: relative;
+}
+
+.formLogin{
+    width: 300px;
+}
+
+.formLogin p {
+    margin: 8px 0;
+    color: #161927;
+}
+
+.formLogin input{
+    margin-bottom: 0;
+}
+
+#loginform{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+#loginform img{
+    margin: auto;
+    width: 150px;
+    margin-bottom: 5px;
+}
+
+#loginform input{
+    width: 90%;
+}
+
+#loginoptions{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.formLogin a {
+    display: inline-block;
+    font-size: 13px;
+    transition: all linear 160ms;
+    margin-bottom: 10px;
+    color: #161927;
+}
+
+.formLogin a:hover {
+    color: #c0c0c0;
+}
+
+#loginoptions p{
+    margin: 5px 0;
+}
+
+.errorlist{
+    color: #FF3131;
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+p .formicons {
+    bottom: 19%;
+    position: absolute;
+    width: 20px !important;
+    right: 3%;
+    background-color: white;
+}
+
+@media(max-width:500px){
+    .page{
+        height: 90vh;
+    }
+}

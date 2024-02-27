@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% block title %}Lista de Fardos{% endblock %}
+{% block content %}
+<style>
+  #imagem-container {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  }
+
+#texto:hover + #imagem-container,
+#imagem-container:hover {
+  display: block;
+}
+</style>
+<h1>Lista de Fardos</h1>
+<p>Segue a lista de fardos registrados.</p>
+<hr>
+
+<form action="/uploadExcelEstoque/" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="divexcel">
+    <a class="txtexcel" id="download" href="/downloadExcelEstoque/">Download Modelo Excel <img class="imgexcel" src="../../static/meuApp/imagens/icons8-arquivo-estatístico-32.png" alt=""></a>
+    <label class="txtexcel" id="upload" for="arquivoexcel">Upload Arquivo Excel <img class="imgexcel" src="../../static/meuApp/imagens/icons8-ms-excel-32.png" alt=""></label>
+    <input class="inputexcel" type="file" name="inputexcel" id="arquivoexcel">
+    <button class="btnexcel" id="btn_excel" type="submit">Enviar <img id = "btnenviar" class="acoes" src="../../static/meuApp/imagens/icons8-enviado-100.png" alt=""></button>
+  </div>
+</form>
+
+<br>
+
+<div class="divtable">
+  <table id="tabelaEstoque">
+        <thead>
+          <tr>
+            <th>Cód. Fardo</th>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Data de Fabricação</th>
+            <th>Data de Validade</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for fardo in object_list %}
+          <tr>
+            <td>{{fardo.id}}</td>
+            <td>
+            <label id="texto">{{fardo.codProduto}}</label>
+            {% if fardo.codProduto.imagem %}
+            <div id="imagem-container"><img height="300px" src="{{ fardo.codProduto.imagem.url }}" alt=""></div>
+            {% endif %}
+            </td>
+            <td>{{fardo.quantidade}}</td>
+            <td>{{fardo.dataFabricacao}}</td>
+            <td>{{fardo.dataValidade}}</td>
+            <td><a title="Editar" href="/estoque/{{fardo.id}}"><img class='acoes' src="../../static/meuApp/imagens/icons8-editar-48.png" alt="Editar"></a>
+            <a title="Excluir" href="/ExcluirEstoque/{{fardo.id}}"><img class='acoes' src="../../static/meuApp/imagens/icons8-excluir-48.png" alt="Excluir"></a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+
+  $(document).ready(function(){
+
+      $("#tabelaEstoque").DataTable({
+          responsive: true,
+          // "bSort": false,
+          "aaSorting": [],
+          "pageLength": 10,
+          "language": {
+              "decimal": "",
+              "emptyTable": "Sem dados disponíveis",
+              "info": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+              "infoEmpty": "Mostrando de 0 até 0 de 0 registros",
+              "infoFiltered": "(filtrado de _MAX_ registros no total)",
+              "infoPostFix": "",
+              "thousands": ",",
+              "lengthMenu": "Mostrar _MENU_ registros",
+              "loadingRecords": "A carregar dados...",
+              "processing": "A processar...",
+              "search": "Procurar:",
+              "zeroRecords": "Não foram encontrados resultados",
+              "paginate": {
+                  "first": "Primeiro",
+                  "last": "Último",
+                  "next": "Seguinte",
+                  "previous": "Anterior"
+              },
+              "aria": {
+                  "sortAscending": ": ordem crescente",
+                  "sortDescending": ": ordem decrescente"
+              }
+          }
+      });
+
+  });
+
+</script>
+</script>
+<script>
+  document.getElementById('arquivoexcel').addEventListener('change', function() {
+    var fileInput = document.getElementById('arquivoexcel');
+    var submitButton = document.getElementById('btn_excel');
+    if (fileInput.files.length > 0) {
+      submitButton.style.display = 'block';
+    } else {
+      submitButton.style.display = 'none';
+    }
+  });
+</script>
+{% endblock %}
